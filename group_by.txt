@@ -1,0 +1,32 @@
+iscritti all'anno
+
+SELECT COUNT(*), YEAR(`enrolment_date`)
+FROM `students`
+GROUP BY YEAR(`enrolment_date`)
+
+
+insegnanti con ufficio allo stesso indirizzo
+
+SELECT COUNT(*), `office_address`
+FROM `teachers`
+GROUP BY `office_address`
+
+
+media di voti per ogni appello d'esame
+
+SELECT AVG(`vote`), `e`.`id`
+FROM `exam_student` AS `es`
+JOIN `exams` AS `e`
+ON `e`.`id` = `es`.`exam_id`
+GROUP BY e.`id`
+
+SELECT AVG(`vote`), `es`.`exam_id`
+FROM `exam_student` AS `es`
+GROUP BY es.`exam_id`
+
+
+quanti corsi per ogni dipartimento
+
+SELECT COUNT(*),`department_id`
+FROM `degrees`
+GROUP BY `department_id`
